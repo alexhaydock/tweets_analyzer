@@ -1,4 +1,29 @@
-# Simple Twitter Profile Analyzer
+# Tweets Analyzer Docker Container
+
+[![pipeline status](https://gitlab.com/alexhaydock/tweets_analyzer/badges/master/pipeline.svg)](https://gitlab.com/alexhaydock/tweets_analyzer/-/commits/master)
+
+
+### How to Use
+This is a containerized version of [tweets_analyzer](https://github.com/x0rz/tweets_analyzer).
+
+First: visit https://apps.twitter.com/ to generate some Twitter API keys. 
+
+Export your API keys as shell variables like so:
+```sh
+export TWEETSANALYSER_CONSUMER_KEY='xxxxxxxxxxxxxxx'
+export TWEETSANALYSER_CONSUMER_SECRET='xxxxxxxxxxxxxxx'
+export TWEETSANALYSER_ACCESS_TOKEN='xxxxxxxxxx-xxxxxxxxxxxxxxx'
+export TWEETSANALYSER_TOKEN_SECRET='xxxxxxxxxxxxxxx'
+```
+
+Now you can run this container with (where `username` is the user you wish to analyze):
+```sh
+docker run --rm -it -e consumer_key="$TWEETSANALYSER_CONSUMER_KEY" -e consumer_secret="$TWEETSANALYSER_CONSUMER_SECRET" -e access_token="$TWEETSANALYSER_ACCESS_TOKEN" -e token_secret="$TWEETSANALYSER_TOKEN_SECRET" registry.gitlab.com/alexhaydock/tweets_analyzer username
+```
+
+Alternatively, you can place your API keys directly into the `docker run` command, or store them in a `docker-compose.yml` file.
+
+# Original README.md: Simple Twitter Profile Analyzer
 
 The goal of this simple python script is to analyze a Twitter profile through its tweets by detecting:
   - Average tweet activity, by hour and by day of the week
