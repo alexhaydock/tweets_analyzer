@@ -17,7 +17,7 @@
 # Install:
 # pip install tweepy ascii_graph tqdm numpy
 
-
+from __future__ import unicode_literals
 
 from ascii_graph import Pyasciigraph
 from ascii_graph.colors import Gre, Yel, Red
@@ -38,7 +38,7 @@ __version__ = '0.2-dev'
 try:
     from urllib.parse import urlparse
 except ImportError:
-    from urllib.parse import urlparse
+    from urlparse import urlparse
 
 from secrets import consumer_key, consumer_secret, access_token, access_token_secret
 
@@ -421,7 +421,7 @@ def main():
         jsono['rt_count'] = retweets
         # Converting users id to screen_names
         retweeted_users_names = {}
-        for k in list(retweeted_users.keys()):
+        for k in retweeted_users.keys():
             retweeted_users_names[id_screen_names[k]] = retweeted_users[k]
 
         cprint("[+] Top 5 most retweeted users")
@@ -429,7 +429,7 @@ def main():
         jsono["top_retweeted_users"] = retweeted_users_names
 
     mentioned_users_names = {}
-    for k in list(mentioned_users.keys()):
+    for k in mentioned_users.keys():
         mentioned_users_names[id_screen_names[k]] = mentioned_users[k]
     cprint("[+] Top 5 most mentioned users")
     print_stats(mentioned_users_names, top=5)
@@ -459,7 +459,7 @@ def main():
         jsono["top_friend_timezones"] = friends_timezone
 
     if args.json is not False:
-        print((json.dumps(jsono)))
+        print(json.dumps(jsono))
     export_write()
 
     if args.save:

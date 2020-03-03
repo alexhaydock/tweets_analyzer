@@ -14,12 +14,12 @@ COPY . /opt/app
 RUN apk --no-cache add \
       gcc \
       musl-dev \
-      python2 \
-      python2-dev \
-      py2-pip \
+      python3 \
+      python3-dev \
+      py3-pip \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
-    && pip install -r /opt/app/requirements.txt
+    && python3 -m pip install -r /opt/app/requirements.txt
 
 # (If no arguments are provided by the user then CMD applies and we will scan the @openrightsgroup user)
-ENTRYPOINT ["python2","/opt/app/tweets_analyzer.py","--name"]
+ENTRYPOINT ["python3","/opt/app/tweets_analyzer.py","--name"]
 CMD ["openrightsgroup"]
