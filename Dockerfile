@@ -14,10 +14,6 @@ COPY . /opt/app
 # 2. Link locale.h to xlocale.h (Fixes issue with xlocale.h missing during pip install)
 # 3. Add Python dependencies (pip for requirements.txt, and numpy directly because it takes forever to build otherwise)
 RUN apk --no-cache add \
-      gcc \
-      musl-dev \
-      python3 \
-      python3-dev \
       py3-numpy \
       py3-pip \
     && ln -s /usr/include/locale.h /usr/include/xlocale.h \
