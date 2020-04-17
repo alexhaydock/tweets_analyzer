@@ -1,5 +1,7 @@
-FROM alpine:latest
+FROM alpine:3
 LABEL maintainer "Alex Haydock <alex@alexhaydock.co.uk>"
+LABEL name "tweets_analyzer"
+LABEL version "1.0"
 
 # About the packages installed in this Docker image:
 # (gcc needed to install our packages with pip later)
